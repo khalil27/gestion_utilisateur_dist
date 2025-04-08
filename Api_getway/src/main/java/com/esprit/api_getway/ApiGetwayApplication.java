@@ -21,7 +21,7 @@ public class ApiGetwayApplication {
                 .route("gestion_utilisateur", r -> r
                         .path("/gestion_utilisateur/**")
                         .filters(f -> f.stripPrefix(1))
-                        .uri("http://localhost:8083/Utilisateur/"))
+                        .uri("http://localhost:8083"))
                 //.route("MSjobs",r->r.path("/jobs/**").uri("lb://MS-job-s"))
                 .build();
     }
