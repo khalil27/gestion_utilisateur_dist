@@ -18,7 +18,10 @@ public class ApiGetwayApplication {
     public RouteLocator getwayRoutes(RouteLocatorBuilder builder)
     {
         return builder.routes()
-                .route("gestion_utilisateur",r->r.path("/gestion_utilisateur/**").uri("http://localhost:8083/"))
+                .route("gestion_utilisateur", r -> r
+                        .path("/gestion_utilisateur/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("http://localhost:8083/Utilisateur/"))
                 //.route("MSjobs",r->r.path("/jobs/**").uri("lb://MS-job-s"))
                 .build();
     }
