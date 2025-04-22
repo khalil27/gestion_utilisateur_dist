@@ -18,11 +18,30 @@ public class ApiGetwayApplication {
     public RouteLocator getwayRoutes(RouteLocatorBuilder builder)
     {
         return builder.routes()
+                // Route vers le service gestion_utilisateur
                 .route("gestion_utilisateur", r -> r
                         .path("/gestion_utilisateur/**")
                         .filters(f -> f.stripPrefix(1))
                         .uri("http://localhost:8083"))
-                //.route("MSjobs",r->r.path("/jobs/**").uri("lb://MS-job-s"))
+
+                // Route vers le service competences
+                .route("competence", r -> r
+                        .path("/competences/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("http://localhost:8084"))
+
+                // Route vers le service rating
+                .route("rating-service", r -> r
+                        .path("/rating/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("http://localhost:8082/ratingService"))
+
+                // Route vers le service gamification (skillexchange)
+                .route("skillexchange", r -> r
+                        .path("/gamification/**")
+                        .filters(f -> f.stripPrefix(1))
+                        .uri("http://localhost:8081/gamification"))
+
                 .build();
     }
 
